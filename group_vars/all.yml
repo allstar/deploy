@@ -1,0 +1,4 @@
+---
+domain: alexecollins.com
+subdomain: games.{{domain}}
+email: alex.e.c@gmail.com

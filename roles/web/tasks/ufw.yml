@@ -1,0 +1,17 @@
+---
+- name: Install ufw
+  apt: pkg=ufw state=present
+
+- name: Deny everything
+  ufw: policy=deny
+  tags: ufw
+
+- name: Set firewall rules for web traffic and SSH
+  ufw: rule=allow port={{ item }} proto=tcp
+  with_items:
+    - http
+    - https
+    - ssh
+
+- name: Enable UFW
+  ufw: state=enabled
