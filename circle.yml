@@ -4,6 +4,9 @@ machine:
 dependencies:
   override:
     - pip install ansible
+test:
+  override:
+    - "true"
 deployment:
   prod:
     branch: master
