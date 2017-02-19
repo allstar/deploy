@@ -4,12 +4,6 @@ machine:
 dependencies:
   override:
     - pip install ansible
-compile:
-  override:
-    - /usr/bin/true
-test:
-  override:
-    - /usr/bin/true
 deployment:
   prod:
     branch: master
