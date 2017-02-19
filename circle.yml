@@ -11,5 +11,6 @@ test:
   override:
     - /usr/bin/true
 deployment:
-  master:
+  prod:
+    branch: master
     commands: ./run.sh
