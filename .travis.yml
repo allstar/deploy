@@ -6,7 +6,7 @@ addons:
       - ansible
 install:
   - ssh-keyscan games.alexecollins.com >> ~/.ssh/known_hosts
-  - echo $KEY | gpg -d --passphrase-fd 0  --batch --yes id_rsa.gpg >> ~/.ssh/id_rsa
-  - chmod 400 ~/.ssh/id_rsa
+  - echo $KEY | gpg -d --passphrase-fd 0  --batch --yes id_rsa.gpg > id_rsa
+  - chmod 400 id_rsa
   - pip install -U ansible
-script: ./run.sh
+script: ./run.s --private-key=id_dsa
