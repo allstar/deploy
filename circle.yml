@@ -11,9 +11,11 @@ dependencies:
     - chmod 400 id_rsa
     - pip install -U ansible
 compile:
-  override: true
+  override:
+    - true
 test:
-  override: true
+  override:
+    - true
 deployment:
   master:
     commands: ./run.sh --private-key=id_dsa
