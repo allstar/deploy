@@ -7,4 +7,5 @@ dependencies:
 deployment:
   prod:
     branch: master
-    commands: ./run.sh
+    commands:
+      - ./run.sh
