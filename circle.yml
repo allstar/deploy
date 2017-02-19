@@ -2,14 +2,8 @@ machine:
   python:
     version: 2.7.5
 dependencies:
-  pre:
-    - apt-get -y install gnupg
-    - apt-get -y install ansible
   override:
-    - ssh-keyscan games.alexecollins.com >> ~/.ssh/known_hosts
-    - echo $KEY | gpg -d --passphrase-fd 0  --batch --yes id_rsa.gpg > id_rsa
-    - chmod 400 id_rsa
-    - pip install -U ansible
+    - pip install ansible
 compile:
   override:
     - /usr/bin/true
@@ -18,4 +12,4 @@ test:
     - /usr/bin/true
 deployment:
   master:
-    commands: ./run.sh --private-key=id_dsa
+    commands: ./run.sh
