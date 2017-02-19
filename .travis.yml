@@ -9,4 +9,4 @@ install:
   - echo $KEY | gpg -d --passphrase-fd 0  --batch --yes id_rsa.gpg > id_rsa
   - chmod 400 id_rsa
   - pip install -U ansible
-script: ./run.s --private-key=id_dsa
+script: ./run.sh --private-key=id_dsa
