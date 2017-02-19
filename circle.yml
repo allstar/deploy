@@ -12,10 +12,10 @@ dependencies:
     - pip install -U ansible
 compile:
   override:
-    - true
+    - /usr/bin/true
 test:
   override:
-    - true
+    - /usr/bin/true
 deployment:
   master:
     commands: ./run.sh --private-key=id_dsa
