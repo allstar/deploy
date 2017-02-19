@@ -1,9 +1,9 @@
 language: python
 addons:
   apt:
-    sources:
+    packages:
       - gnupg
-      -  ansible
+      - ansible
 install:
   - ssh-keyscan games.alexecollins.com >> ~/.ssh/known_hosts
   - echo $KEY | gpg -d --passphrase-fd 0  --batch --yes id_rsa.gpg >> ~/.ssh/id_rsa
