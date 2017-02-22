@@ -10,3 +10,4 @@
 
 - name: Start Postges
   service: name=postgresql state=started
+  notify: Create Wallet
