@@ -4,3 +4,9 @@
 
 - name: Start MongoDB
   service: name=mongodb state=started
+
+- name: install Postgres
+  apt: name=postgresql
+
+- name: Start Postges
+  service: name=postgresql state=started
