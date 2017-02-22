@@ -1,0 +1,5 @@
+---
+- name: Create Wallet
+  command: createdb wallet
+  become: true
+  become_user: postgres
