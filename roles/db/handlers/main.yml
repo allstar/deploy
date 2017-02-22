@@ -3,3 +3,8 @@
   command: createdb wallet
   become: true
   become_user: postgres
+
+- name: Set Wallet Password
+  command: psql -c "ALTER USER wallet WITH PASSWORD 'wallet';"
+  become: true
+  become_user: postgres
