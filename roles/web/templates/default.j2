@@ -78,6 +78,7 @@ server {
 	#}
 	location /api/wallet {
 		rewrite    /api/wallet(.*)(.json)? /0$1 break;
+		proxy_set_header Authorization "Basic d2ViOndlYg==";
     proxy_pass http://127.0.0.1:9090;
 	}
 	location /api/games {
