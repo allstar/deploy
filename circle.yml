@@ -13,5 +13,5 @@ deployment:
   prod:
     branch: master
     commands:
-      - env KUBECONFIG=kubeconfig ./kubectl replace --force -f $COMPONENT.yml
+      - env KUBECONFIG=kubeconfig PATH=$PATH:. kubectl replace --force -f $COMPONENT.yml
       - "curl -f -u $CIRCLE_TOKEN: -X POST https://circleci.com/api/v1.1/project/github/phoebus-games/smoke/tree/master"
