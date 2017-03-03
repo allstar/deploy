@@ -1,10 +1,10 @@
 machine:
   python:
     version: 2.7.5
-addons:
-  apt:
-    packages:
-      - gnupg
+  addons:
+    apt:
+      packages:
+        - gnupg
 compile:
   override:
   - apt-cache search kube
