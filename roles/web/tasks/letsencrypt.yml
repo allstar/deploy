@@ -1,8 +1,0 @@
-- name: Install LetsEncrypt
-  apt: name=letsencrypt
-
-- name: Get certificates
-  command: letsencrypt certonly -a webroot --webroot-path=/var/www/html -d games.alexecollins.com --email={{email}}  --agree-tos
-  args:
-    creates: /etc/letsencrypt/live/games.alexecollins.com
-  notify: test renewal

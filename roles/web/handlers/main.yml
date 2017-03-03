@@ -1,6 +1,0 @@
----
-- name: test renewal
-  command: letsencrypt renew --dry-run --agree-tos
-
-- name: restart nginx
-  service: name=nginx state=restarted
