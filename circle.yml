@@ -1,6 +1,7 @@
 compile:
   override:
-  - apt-get -y install gnupg
+  - sudo apt-cache search kube
+  - sudo apt-get -y install gnupg
   - echo $GPG_KEY | gpg -d --passphrase-fd 0  --batch --yes kubeconfig.gpg > kubeconfig
 test:
   override:
