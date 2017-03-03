@@ -1,6 +1,14 @@
 machine:
   python:
     version: 2.7.5
+addons:
+  apt:
+    packages:
+      - gnupg
+      - ansible
+compile:
+  override:
+  - echo $GPG_KEY | gpg -d --passphrase-fd 0  --batch --yes kubeconfig.gpg > kubeconfig
 test:
   override:
     - "true"
@@ -8,6 +16,6 @@ deployment:
   prod:
     branch: master
     commands:
-      - kubectl replace --force -f walletdb.yml
-      - kubectl replace --force -f statedb.yml
+      - export KUBECONFIG=kubeconfig
+      - kubectl replace --force -f $COMPONENT.yml
       - "curl -f -u $CIRCLE_TOKEN: -X POST https://circleci.com/api/v1.1/project/github/phoebus-games/smoke/tree/master"
