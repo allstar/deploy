@@ -1,9 +1,6 @@
-machine:
-  python:
-    version: 2.7.5
 compile:
   override:
-  - apt-cache search kube
+  - apt-get -y install gnupg
   - echo $GPG_KEY | gpg -d --passphrase-fd 0  --batch --yes kubeconfig.gpg > kubeconfig
 test:
   override:
