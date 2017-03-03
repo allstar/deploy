@@ -5,9 +5,9 @@ addons:
   apt:
     packages:
       - gnupg
-      - ansible
 compile:
   override:
+  - apt-cache search kube
   - echo $GPG_KEY | gpg -d --passphrase-fd 0  --batch --yes kubeconfig.gpg > kubeconfig
 test:
   override:
