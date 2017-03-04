@@ -2,30 +2,30 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: gf
+  name: games
   labels:
-    app: gf
+    app: games
 spec:
   ports:
   - port: 8080
-    name: gf
+    name: games
   selector:
-    app: gf
+    app: games
 ---
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
-  name: gf-deployment
+  name: games-deployment
 spec:
   replicas: 1
   template:
     metadata:
       labels:
-        app: gf
+        app: games
     spec:
       containers:
-      - name: gf
-        image: alexec/gf:latest
+      - name: games
+        image: alexec/games:latest
         imagePullPolicy: Always
         env:
           - name: JAVA_OPTS
