@@ -11,19 +11,19 @@ spec:
     name: walletdb
   clusterIP: None
   selector:
-    app: walletdb
+    app: postgres
 ---
 apiVersion: apps/v1beta1
 kind: StatefulSet
 metadata:
-  name: walletdb
+  name: postgres
 spec:
-  serviceName: walletdb
+  serviceName: postgres
   replicas: 1
   template:
     metadata:
       labels:
-        app: walletdb
+        app: postgres
     spec:
       containers:
       - name: postgres

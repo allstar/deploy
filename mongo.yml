@@ -11,19 +11,19 @@ spec:
     name: statedb
   clusterIP: None
   selector:
-    app: statedb
+    app: mongo
 ---
 apiVersion: apps/v1beta1
 kind: StatefulSet
 metadata:
-  name: statedb
+  name: mongo
 spec:
-  serviceName: statedb
+  serviceName: mongo
   replicas: 1
   template:
     metadata:
       labels:
-        app: statedb
+        app: mongo
     spec:
       containers:
       - name: mongo
