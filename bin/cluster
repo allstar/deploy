@@ -1,0 +1,16 @@
+#!/bin/sh
+set -eu
+
+case ${1:-''} in
+	up|down)
+		TYPE=$([[ $1 = 'up' ]] && echo power_on || echo shutdown)
+		for ID in 41089079 41089136 41089154; do
+			echo "$ID $TYPE"
+			curl -f -X POST -H "Content-Type: application/json" -H "Authorization: Bearer $TOKEN" -d "{\"type\":\"$TYPE\"}" "https://api.digitalocean.com/v2/droplets/$ID/actions"
+		done
+	;;
+	*)
+		echo "usage: $0 up|down" >&2
+		exit 1
+		;;
+esac
