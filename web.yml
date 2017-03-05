@@ -30,6 +30,9 @@ spec:
         imagePullPolicy: Always
         ports:
         - containerPort: 80
+        resources:
+          limits:
+            memory: 32Mi
         readinessProbe:
           httpGet:
             path: /
@@ -50,4 +53,4 @@ metadata:
 spec:
   backend:
     serviceName: web
-    servicePort: 80 
+    servicePort: 80
