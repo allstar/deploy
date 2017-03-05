@@ -30,6 +30,8 @@ spec:
         env:
           - name: JAVA_OPTS
             value: -Xmx256m
+          - name: APPLICATION_SECRET
+            value: ******
         ports:
         - containerPort: 9000
         resources:
