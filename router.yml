@@ -7,7 +7,7 @@ metadata:
     app: router
 spec:
   ports:
-  - port: 8080
+  - port: 9000
     name: router
   selector:
     app: router
@@ -31,7 +31,7 @@ spec:
           - name: JAVA_OPTS
             value: -Xmx256m
           - name: APPLICATION_SECRET
-            value: ******
+            value: XXXXXX
         ports:
         - containerPort: 9000
         resources:
@@ -39,7 +39,7 @@ spec:
             memory: 256Mi
         readinessProbe:
           httpGet:
-            path: /api/wallet
+            path: /wallet
             port: 8080
             httpHeaders:
             - name: Host
@@ -50,7 +50,7 @@ spec:
           periodSeconds: 15
         livenessProbe:
           httpGet:
-            path: /api/wallet
+            path: /wallet
             port: 8080
             httpHeaders:
             - name: Host
