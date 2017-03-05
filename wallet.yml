@@ -43,7 +43,7 @@ spec:
             memory: 256Mi
         readinessProbe:
           httpGet:
-            path: /0
+            path: /wallets/0
             port: 8080
             httpHeaders:
             - name: Host
@@ -54,7 +54,7 @@ spec:
           periodSeconds: 15
         livenessProbe:
           httpGet:
-            path: /0
+            path: /wallets/0
             port: 8080
             httpHeaders:
             - name: Host
