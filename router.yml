@@ -40,7 +40,7 @@ spec:
         readinessProbe:
           httpGet:
             path: /wallet
-            port: 8080
+            port: 9000
             httpHeaders:
             - name: Host
               value: localhost
@@ -51,7 +51,7 @@ spec:
         livenessProbe:
           httpGet:
             path: /wallet
-            port: 8080
+            port: 9000
             httpHeaders:
             - name: Host
               value: localhost
