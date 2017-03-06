@@ -37,25 +37,3 @@ spec:
         resources:
           limits:
             memory: 256Mi
-        readinessProbe:
-          httpGet:
-            path: /wallet
-            port: 9000
-            httpHeaders:
-            - name: Host
-              value: localhost
-            - name: Authorization
-              value: "Basic cm91dGVyOnJvdXRlcg=="
-          initialDelaySeconds: 15
-          periodSeconds: 15
-        livenessProbe:
-          httpGet:
-            path: /wallet
-            port: 9000
-            httpHeaders:
-            - name: Host
-              value: localhost
-            - name: Authorization
-              value: "Basic cm91dGVyOnJvdXRlcg=="
-          initialDelaySeconds: 15
-          periodSeconds: 15
