@@ -1,0 +1,63 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: classic-slot
+  labels:
+    app: classic-slot
+spec:
+  ports:
+  - port: 8080
+    name: classic-slot
+  selector:
+    app: classic-slot
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: classic-slot-deployment
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: classic-slot
+    spec:
+      containers:
+      - name: classic-slot
+        image: alexec/games:latest
+        imagePullPolicy: Always
+        env:
+          - name: JAVA_OPTS
+            value: -Xmx256m
+          - name: MONGODB_HOST
+            value: statedb
+        ports:
+        - containerPort: 8080
+        resources:
+          limits:
+            memory: 256Mi
+        readinessProbe:
+          httpGet:
+            path: /games/roulette
+            port: 8080
+            httpHeaders:
+            - name: PlayerId
+              value: "0"
+            - name: Wallet
+              value: http://wallet:8080
+          initialDelaySeconds: 15
+          periodSeconds: 15
+          timeoutSeconds: 10
+        livenessProbe:
+          httpGet:
+            path: /games/roulette
+            port: 8080
+            httpHeaders:
+            - name: PlayerId
+              value: "0"
+            - name: Wallet
+              value: http://wallet:8080
+          initialDelaySeconds: 15
+          periodSeconds: 15
+          timeoutSeconds: 10
