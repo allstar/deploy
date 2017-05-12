@@ -13,6 +13,6 @@ deployment:
   prod:
     branch: master
     commands:
-      - env KUBECONFIG=kubeconfig PATH=$PATH:. kubectl replace --force -f $COMPONENT.yml
+      - env KUBECONFIG=kubeconfig PATH=$PATH:. kubectl apply -f manifests/$COMPONENT.yml
       - env KUBECONFIG=kubeconfig PATH=$PATH:. kubectl get pods -o name|grep "$COMPONENT\|web"|env KUBECONFIG=kubeconfig PATH=$PATH:. xargs kubectl delete
       - "curl -f -u $CIRCLE_TOKEN: -X POST https://circleci.com/api/v1.1/project/github/phoebus-games/smoke/tree/master"
