@@ -4,7 +4,7 @@ set -eu
 case ${1:-''} in
 	up|down)
 		TYPE=$([[ $1 = 'up' ]] && echo power_on || echo shutdown)
-		for ID in 41089079 41089136 41089154; do
+		for ID in 48753697 48753669 48753634; do
 			echo "$ID $TYPE"
 			curl -f -X POST -H "Content-Type: application/json" -H "Authorization: Bearer $TOKEN" -d "{\"type\":\"$TYPE\"}" "https://api.digitalocean.com/v2/droplets/$ID/actions"
 		done
