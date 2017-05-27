@@ -20,5 +20,8 @@ jobs:
       - run:
           environment:
             KUBECONFIG: kubeconfig
-          command: ./kubectl exec $(./kubectl get pods -o name -l app=web|cut -c 6-) -- nginx -s reload
+          command: |
+            if [ "${COMPONENT}" != "web" ]; then
+              ./kubectl exec $(./kubectl get pods -o name -l app=web|cut -c 6-) -- nginx -s reload
+            fi
       - run: "curl -f -u $CIRCLE_TOKEN: -X POST https://circleci.com/api/v1.1/project/github/phoebus-games/smoke/tree/master"
