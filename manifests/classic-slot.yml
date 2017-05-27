@@ -25,8 +25,7 @@ spec:
     spec:
       containers:
       - name: classic-slot
-        image: alexec/games:latest
-        imagePullPolicy: Always
+        image: alexec/games:$VERSION
         env:
           - name: JAVA_OPTS
             value: -Xmx256m
