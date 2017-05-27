@@ -26,8 +26,7 @@ spec:
     spec:
       containers:
       - name: web
-        image: alexec/web:latest
-        imagePullPolicy: Always
+        image: alexec/web::$VERSION
         ports:
         - containerPort: 80
         resources:
