@@ -26,7 +26,7 @@ spec:
     spec:
       containers:
       - name: web
-        image: alexec/web::$VERSION
+        image: alexec/web:$VERSION
         ports:
         - containerPort: 80
         resources:
