@@ -13,10 +13,10 @@ jobs:
       - run: echo $GPG_KEY | gpg -d --passphrase-fd 0  --batch --yes kubeconfig.gpg > kubeconfig
       - run:
           environment:
-            KUBECONFIG=kubeconfig
+            KUBECONFIG: kubeconfig
           command: ./kubectl apply -f manifests/$COMPONENT.yml
       - run:
           environment:
-            KUBECONFIG=kubeconfig
+            KUBECONFIG: kubeconfig
           command: ./kubectl get pods -o name|grep "$COMPONENT\|web"|xargs ./kubectl delete
       - "curl -f -u $CIRCLE_TOKEN: -X POST https://circleci.com/api/v1.1/project/github/phoebus-games/smoke/tree/master"
