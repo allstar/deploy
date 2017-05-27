@@ -25,8 +25,7 @@ spec:
     spec:
       containers:
       - name: roulette
-        image: alexec/roulette:latest
-        imagePullPolicy: Always
+        image: alexec/roulette:$VERSION
         env:
           - name: JAVA_OPTS
             value: -Xmx256m
