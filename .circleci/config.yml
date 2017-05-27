@@ -10,6 +10,9 @@ jobs:
       - run: chmod +x kubectl
       - run: sudo apt-get -y install gnupg
       - run: echo $GPG_KEY | gpg -d --passphrase-fd 0  --batch --yes kubeconfig.gpg > kubeconfig
+      - run: envsubst < manifests/$COMPONENT.yml > tmp
+      - run: mv tmp manifests/$COMPONENT.yml
+      - run: git diff manifests/$COMPONENT.yml
       - run:
           environment:
             KUBECONFIG: kubeconfig
