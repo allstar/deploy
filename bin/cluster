@@ -1,12 +1,20 @@
 #!/bin/sh
 set -eu
 
+IDS='48753697 48753669 48753634'
+
 case ${1:-''} in
 	up|down)
 		TYPE=$([[ $1 = 'up' ]] && echo power_on || echo shutdown)
-		for ID in 48753697 48753669 48753634; do
+		for ID in $IDS; do
 			echo "$ID $TYPE"
 			curl -f -X POST -H "Content-Type: application/json" -H "Authorization: Bearer $TOKEN" -d "{\"type\":\"$TYPE\"}" "https://api.digitalocean.com/v2/droplets/$ID/actions"
+		done
+	;;
+	destroy)
+		for ID in $IDS; do
+			echo "$ID delete"
+			curl -f -X DELETE -H "Authorization: Bearer $TOKEN" "https://api.digitalocean.com/v2/droplets/$ID"
 		done
 	;;
 	*)
